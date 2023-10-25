@@ -10,7 +10,7 @@ app.use(express.urlencoded({extended: true}))
 
 connectToDB()
 
-app.get("/", userRoutes)
-app.post("/createUser", userRoutes)
+app.use("/", userRoutes)
+// app.post("/createUser", userRoutes)
 
 module.exports = app
