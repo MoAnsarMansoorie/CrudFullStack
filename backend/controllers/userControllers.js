@@ -70,10 +70,11 @@ exports.editUser = async (req, res) => {
 
 exports.deleteUser = async (req, res) => {
     try {
-        const user = await User.findByIdAndDelete(req.params.id, req.body)
+        const userId = req.params.id
+        const user = await User.findByIdAndDelete(userId)
         res.status(200).json({
             success: true,
-            message: "User updated successfully!",
+            message: "User deleted successfully!",
             user
         })
 
