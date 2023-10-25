@@ -1,8 +1,16 @@
+
 const express = require("express")
+const connectToDB = require("./config/db")
+const userRoutes = require("./routes/userRoute")
 const app = express()
 
-app.get("/", (req, res) => {
-    res.status(200).send("This is ToDo App!")
-})
+// middleware
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+
+connectToDB()
+
+app.get("/", userRoutes)
+app.post("/createUser", userRoutes)
 
 module.exports = app
